@@ -11,11 +11,16 @@ export const extractItemsFromReceipt = async (base64Image: string): Promise<Bill
   });
 
   if (!response.ok) {
-      // Try to parse the error from the backend, but provide a fallback.
-      const errorData = await response.json().catch(() => ({ 
-          error: `Error del servidor: ${response.status} ${response.statusText}` 
-      }));
-      throw new Error(errorData.error || `Error del servidor: ${response.statusText}`);
+      let errorMessage = `Error del servidor: ${response.status}.`;
+      try {
+          const errorData = await response.json();
+          // Use the specific error message from the backend if available
+          errorMessage = errorData.error || errorMessage;
+      } catch (e) {
+          // JSON parsing failed, stick with the original HTTP error.
+          console.error("Could not parse error JSON from server", e);
+      }
+      throw new Error(errorMessage);
   }
 
   const parsedData: { name: string; quantity: number; price: number }[] = await response.json();
@@ -45,4 +50,3 @@ export const extractItemsFromReceipt = async (base64Image: string): Promise<Bill
       });
   }
   return [];
-};
