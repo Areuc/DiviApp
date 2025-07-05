@@ -1,0 +1,8 @@
+{
+  "name": "DividApp",
+  "description": "An intelligent bill splitting application that uses AI to scan receipts, allowing users to drag and drop items to assign them to participants and easily calculate who owes what.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "prompt": ""
+}
