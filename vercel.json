@@ -1,3 +1,11 @@
 {
+  "functions": {
+    "api/scan.ts": {
+      "maxDuration": 30,
+      "bodyParser": {
+        "sizeLimit": "10mb"
+      }
+    }
+  },
   "framework": "vite"
 }
