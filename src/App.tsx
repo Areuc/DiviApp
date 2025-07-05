@@ -61,11 +61,12 @@ const App: React.FC = () => {
 
     if (error) {
        return (
-        <div className="flex flex-col items-center justify-center h-full pt-10 text-center">
-          <p className="text-red-500 font-semibold">{error}</p>
+        <div className="flex flex-col items-center justify-center h-full pt-10 text-center bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-4">¡Ups! Ocurrió un error</h3>
+          <p className="text-text-secondary-light dark:text-text-secondary-dark max-w-md">{error}</p>
           <button
             onClick={handleStartOver}
-            className="mt-4 px-6 py-2 bg-primary-light text-white rounded-lg shadow-md hover:bg-primary-light/90 dark:bg-primary-dark dark:hover:bg-primary-dark/90 transition-colors"
+            className="mt-6 px-6 py-2 bg-primary-light text-white rounded-lg shadow-md hover:bg-primary-light/90 dark:bg-primary-dark dark:hover:bg-primary-dark/90 transition-colors"
           >
             Intentar de nuevo
           </button>
